@@ -2,7 +2,7 @@
 
 ---
 
-## Overview - NEW
+## Overview
 A modern data engineering platform based on Lakehouse architecture using Delta Live Tables (DLT) for ingestion, transformation, governance, and analytics of Brazilian Federal Revenue public data (CNPJ).
 This project implements an end-to-end data pipeline following the **Medallion Architecture (Bronze, Silver, Gold)** using Databricks.
 
