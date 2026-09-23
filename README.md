@@ -53,10 +53,10 @@ Consumption (SQL / BI / Analytics)
 ```
 cnpj-dlt-pipeline/
 │
-├── ingestion/
-│   └── ingestion_cnpj.py
+├── scripts/
+│   └── data_ingestion.py
 │
-├── dlt/
+├── pipelines/
 │   ├── companies/
 │   │   └── dlt_companies.py
 │   │
