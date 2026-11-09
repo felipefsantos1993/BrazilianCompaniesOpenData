@@ -1,15 +1,15 @@
 # Brazilian Companies Open Data Platform
 
-[![Project Status](https://img.shields.io/badge/Status-In%20Development-orange)]()
-[![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)]()
-[![Microsoft Azure](https://img.shields.io/badge/Microsoft%20Azure-Cloud-0078D4?logo=microsoftazure)]()
-[![Databricks](https://img.shields.io/badge/Azure-Databricks-FF3621?logo=databricks)]()
-[![Delta Lake](https://img.shields.io/badge/Delta-Lake-00ADD8?logo=delta)]()
-[![License](https://img.shields.io/badge/License-MIT-green.svg)]()
+[![Project Status](https://img.shields.io/badge/Status-In%20Development-orange)](https://github.com/YOUR-USERNAME/BrazilianCompaniesOpenData)
+[![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)](https://www.python.org/)
+[![Azure](https://img.shields.io/badge/Microsoft%20Azure-Cloud-0078D4?logo=microsoftazure)](https://azure.microsoft.com/)
+[![Databricks](https://img.shields.io/badge/Databricks-Lakehouse-FF3621?logo=databricks)](https://www.databricks.com/)
+[![Terraform](https://img.shields.io/badge/Terraform-IaC-844FBA?logo=terraform)](https://www.terraform.io/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 An end-to-end Data Engineering platform designed to ingest, process, validate, and transform Brazilian company registration data published by the Brazilian Federal Revenue Service (Receita Federal do Brasil).
 
-Built on Microsoft Azure and Azure Databricks, this project demonstrates modern Data Engineering practices through a scalable and reproducible Lakehouse architecture.
+Built with Microsoft Azure, Azure Data Factory, Azure Databricks, Azure Data Lake Storage Gen2, Python, PySpark, and Delta Lake, this project demonstrates modern Data Engineering practices through a scalable and reproducible Lakehouse architecture.
 
 ---
 
@@ -29,49 +29,49 @@ Built on Microsoft Azure and Azure Databricks, this project demonstrates modern 
 - [CI/CD](#cicd)
 - [Repository Structure](#repository-structure)
 - [Getting Started](#getting-started)
-- [Security and Configuration](#security-and-configuration)
 - [Cost Considerations](#cost-considerations)
 - [Roadmap](#roadmap)
-- [Contributing](#contributing)
 - [License](#license)
 
 ---
 
 ## Project Overview
 
-The Brazilian Companies Open Data Platform is an open-source Data Engineering project focused on building an end-to-end data processing solution using publicly available Brazilian company registration datasets.
+The main goal of this project is to build a complete Data Engineering platform using publicly available Brazilian company registration data.
 
-The platform implements automated data ingestion, distributed processing, data quality validation, and centralized workflow orchestration.
+The solution implements automated data ingestion, distributed data processing, data quality validation, centralized orchestration, and infrastructure automation.
 
-The main objectives are:
+The project aims to demonstrate the implementation of the following Data Engineering concepts and practices:
 
-- Automate the ingestion of public datasets from the Brazilian Federal Revenue Service.
-- Store source files in Azure Data Lake Storage Gen2 (ADLS Gen2).
-- Process large-scale datasets using Azure Databricks and Apache Spark.
-- Implement the Medallion Architecture (Bronze, Silver, and Gold).
-- Apply data quality rules using Lakeflow Declarative Pipelines.
-- Orchestrate data workflows using Azure Data Factory.
-- Apply Infrastructure as Code (IaC) and CI/CD best practices.
-- Provide a reproducible implementation that other engineers can deploy in their own Azure environments.
+- Automated data ingestion and file management.
+- Cloud-based data lake architecture.
+- Medallion Architecture (Bronze, Silver, and Gold).
+- Distributed data processing with Apache Spark.
+- Declarative data pipelines using Databricks Lakeflow.
+- Data quality enforcement and monitoring.
+- Centralized workflow orchestration.
+- Infrastructure as Code (IaC).
+- Continuous Integration and Continuous Deployment (CI/CD).
+- Reproducible cloud infrastructure and data workflows.
 
-This repository is also intended to serve as a practical reference for modern Data Engineering architectures and development practices.
+The repository is designed to be reusable, allowing other engineers to deploy and reproduce the solution using their own Azure subscriptions.
 
 ## Business Context
 
 The Brazilian Federal Revenue Service provides public datasets containing information about companies registered in Brazil.
 
-These datasets contain valuable information that can be used to analyze the Brazilian business ecosystem, including company registrations, economic activities, and geographic distribution.
+These datasets contain valuable information that can be used to build analytical solutions and generate insights about the Brazilian business ecosystem.
 
-By applying modern cloud data engineering technologies, this project aims to transform raw public datasets into reliable, structured, and analytics-ready information.
+This project uses these public datasets to demonstrate how large-scale data platforms can be designed and implemented using modern cloud technologies.
 
 Potential analytical use cases include:
 
 - Company distribution by state and municipality.
-- Company registrations over time.
+- Company registration and opening trends.
 - Company distribution by economic activity (CNAE).
 - Active versus inactive companies.
 - Company size distribution.
-- Business ecosystem analysis.
+- Analysis of the Brazilian business ecosystem.
 
 ## Project Scope
 
@@ -79,14 +79,14 @@ The project will be developed incrementally, starting with the Companies dataset
 
 The architecture is designed to support additional data domains in future development phases.
 
-| Data Domain | Description | Status |
+| Data Domain | Implementation Phase | Status |
 |---|---|---|
-| Companies | Brazilian company registration information | Initial scope |
-| Establishments | Company establishment information | Planned |
-| Partners | Company ownership and partner information | Planned |
-| Reference Data | CNAEs, municipalities, and other reference datasets | Planned |
+| Companies | Phase 1 | Planned |
+| Establishments | Phase 2 | Planned |
+| Partners | Phase 3 | Planned |
+| Reference datasets | Future expansion | Planned |
 
-The initial implementation focuses on establishing the ingestion framework, Lakehouse architecture, data quality standards, and orchestration strategy using the Companies dataset.
+The initial implementation will focus on establishing the ingestion framework, Lakehouse architecture, data quality standards, and orchestration strategy using the Companies dataset.
 
 Once the initial pipeline is stable, additional data domains will be incorporated using the same architectural principles.
 
@@ -98,7 +98,7 @@ Azure Data Factory acts as the central orchestration layer, coordinating the exe
 
 ### High-Level Architecture
 
-![Brazilian Companies Open Data Platform - Architecture](docs/images/architecture.png)
+![Brazilian Companies Open Data Platform Architecture](docs/images/architecture.png)
 
 *Figure 1 — High-level solution architecture.*
 
@@ -107,18 +107,27 @@ Azure Data Factory acts as the central orchestration layer, coordinating the exe
 | Component | Responsibility |
 |---|---|
 | Azure Data Factory | Centralized workflow orchestration and execution control |
-| Azure Databricks | Data ingestion and distributed data processing |
-| Python | Data extraction, validation, and ingestion |
-| Azure Data Lake Storage Gen2 | Data lake storage |
-| Lakeflow Declarative Pipelines | Data transformation and pipeline management |
-| Delta Lake | Transactional data storage |
+| Azure Databricks | Distributed data processing |
+| Python | Data extraction and ingestion |
+| Azure Data Lake Storage Gen2 | Raw data storage and landing zone |
+| Lakeflow Declarative Pipelines | Declarative data transformation and pipeline management |
+| Delta Lake | Reliable transactional data storage |
 | Terraform | Infrastructure provisioning |
 | GitHub Actions | CI/CD automation |
 | Unity Catalog | Data governance and catalog management |
 
-## Technology Stack
+### Architecture Principles
 
-The following technologies are part of the planned solution:
+The solution follows these architectural principles:
+
+- **Separation of concerns:** ingestion, processing, and orchestration have clearly defined responsibilities.
+- **Scalability:** distributed processing using Apache Spark.
+- **Reusability:** modular code and reusable infrastructure definitions.
+- **Reliability:** execution tracking, error handling, and data quality validation.
+- **Reproducibility:** infrastructure and application artifacts are version-controlled.
+- **Maintainability:** standardized project structure and technical documentation.
+
+## Technology Stack
 
 | Category | Technology |
 |---|---|
@@ -167,14 +176,18 @@ The solution is divided into two main Databricks jobs, orchestrated by Azure Dat
 
 ### 1. Data Ingestion
 
-A Python-based Databricks Job is responsible for:
+A Python-based Databricks Job is responsible for collecting and storing source files.
+
+Its main responsibilities include:
 
 - Retrieving source files from the official data provider.
 - Downloading compressed datasets.
 - Validating downloaded files.
-- Calculating SHA-256 checksums.
+- Calculating file checksums.
 - Uploading source files to Azure Data Lake Storage Gen2.
 - Recording ingestion metadata and execution status.
+
+The original files are preserved in the ADLS landing zone to support traceability and reprocessing.
 
 ### 2. Data Processing
 
@@ -182,9 +195,9 @@ A Databricks Lakeflow Declarative Pipeline processes the ingested datasets.
 
 The initial implementation focuses on the Companies domain.
 
-The processing pipeline is responsible for:
+Its responsibilities include:
 
-- Reading source data from the ADLS landing zone.
+- Reading source files from the ADLS landing zone.
 - Creating Bronze Delta tables.
 - Applying data cleansing and standardization.
 - Enforcing data quality expectations.
@@ -205,7 +218,8 @@ Main characteristics:
 - Preserve source information.
 - Maintain ingestion metadata.
 - Track source files.
-- Support data traceability and reprocessing.
+- Support data traceability.
+- Enable data reprocessing.
 
 ### Silver Layer
 
@@ -218,6 +232,7 @@ Main characteristics:
 - Duplicate identification.
 - Business rule validation.
 - Data quality expectations.
+- Invalid record handling.
 
 ### Gold Layer
 
@@ -238,14 +253,14 @@ Data quality is implemented primarily in the Silver layer using Lakeflow Declara
 Initial validation rules may include:
 
 - Mandatory field validation.
-- Valid company registration identifiers.
+- Valid company identifiers.
 - Valid date formats.
 - Business rule validation.
 - Duplicate record detection.
 
-Expectations will be configured according to the severity of each validation rule.
+Data quality expectations will be configured according to the severity of each validation rule.
 
-The solution will also provide mechanisms to monitor data quality violations and investigate rejected records.
+The solution will also support monitoring of data quality violations and the investigation of rejected records.
 
 ## Orchestration
 
@@ -254,13 +269,14 @@ Azure Data Factory acts as the central controller of the platform.
 The main orchestration workflow follows these steps:
 
 1. Start pipeline execution.
-2. Trigger the Databricks ingestion job.
-3. Wait for ingestion completion.
-4. Validate ingestion results.
-5. Trigger the Databricks processing pipeline.
-6. Monitor processing execution.
-7. Record execution status.
-8. Handle failures and notifications.
+2. Generate an execution identifier.
+3. Trigger the Databricks ingestion job.
+4. Wait for ingestion completion.
+5. Validate ingestion results.
+6. Trigger the Databricks processing pipeline.
+7. Monitor processing execution.
+8. Record execution status.
+9. Handle failures and notifications.
 
 The orchestration layer is responsible for execution dependencies, retries, timeouts, and operational monitoring.
 
@@ -294,7 +310,7 @@ The CI/CD implementation is designed to include:
 - Databricks resource deployment.
 - Automated deployment workflows.
 
-Environment-specific configuration and credentials must be managed securely and must never be committed to the repository.
+Environment-specific configurations and credentials must be managed securely and must never be committed to the repository.
 
 ## Repository Structure
 
@@ -305,7 +321,7 @@ BrazilianCompaniesOpenData/
 │
 ├── README.md
 ├── LICENSE
-├── .gitignore
+├── .gitattributes
 │
 ├── docs/
 │   ├── images/
@@ -353,32 +369,9 @@ Before deploying the solution, the following tools and resources will be require
 - Azure Data Factory.
 - Azure CLI.
 - Terraform.
-- Python.
+- Python 3.11 or compatible version.
 - Databricks CLI.
 - Git.
-
-### Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/YOUR-USERNAME/BrazilianCompaniesOpenData.git
-
-cd BrazilianCompaniesOpenData
-```
-
-### Configuration
-
-Create your environment-specific configuration using the provided example configuration files.
-
-Configure your own:
-
-- Azure subscription.
-- Resource group.
-- Storage account.
-- Databricks workspace.
-- Databricks catalog.
-- Authentication settings.
 
 ### Deployment
 
@@ -392,4 +385,90 @@ The intended deployment workflow is:
 4. Provision Azure resources using Terraform.
 5. Deploy Databricks resources.
 6. Publish Azure Data Factory pipelines.
-7. Execute the main
+7. Execute the main orchestration pipeline.
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/YOUR-USERNAME/BrazilianCompaniesOpenData.git
+
+cd BrazilianCompaniesOpenData
+```
+
+Replace `YOUR-USERNAME` with your GitHub username.
+
+## Cost Considerations
+
+Running this project requires Azure resources that may generate cloud infrastructure and processing costs.
+
+Users are responsible for their own Azure subscriptions and resource consumption.
+
+Before deploying the solution:
+
+- Review the pricing of each Azure service.
+- Use appropriately sized compute resources.
+- Avoid leaving unnecessary compute resources running.
+- Monitor storage and processing consumption.
+- Remove unused infrastructure when the project is no longer needed.
+
+The project does not include shared cloud infrastructure. Each user must provision and manage their own environment.
+
+## Roadmap
+
+The project is being developed incrementally.
+
+### Phase 1 — Initial Implementation
+
+- [ ] Define the solution architecture.
+- [ ] Implement the Companies ingestion module.
+- [ ] Provision Azure infrastructure using Terraform.
+- [ ] Configure Azure Data Lake Storage Gen2.
+- [ ] Implement the Databricks ingestion job.
+- [ ] Implement the Bronze processing layer.
+- [ ] Implement the Silver processing layer and expectations.
+- [ ] Implement the Gold processing layer.
+- [ ] Configure Azure Data Factory orchestration.
+
+### Phase 2 — Engineering Practices
+
+- [ ] Implement automated unit tests.
+- [ ] Implement integration tests.
+- [ ] Implement GitHub Actions CI/CD.
+- [ ] Implement monitoring and observability.
+- [ ] Implement execution auditing.
+- [ ] Document the deployment process.
+
+### Phase 3 — Data Domain Expansion
+
+- [ ] Add the Establishments dataset.
+- [ ] Implement Establishments Bronze, Silver, and Gold layers.
+- [ ] Add the Partners dataset.
+- [ ] Implement Partners Bronze, Silver, and Gold layers.
+- [ ] Add reference datasets such as CNAEs and Municipalities.
+- [ ] Expand analytical data models.
+
+## Contributing
+
+Contributions, suggestions, and improvements are welcome.
+
+If you would like to contribute:
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Implement your changes.
+4. Add or update automated tests.
+5. Submit a Pull Request describing your changes.
+
+More detailed contribution guidelines may be added as the project evolves.
+
+## License
+
+This project is licensed under the MIT License.
+
+See the [LICENSE](LICENSE) file for details.
+
+## Disclaimer
+
+This is an independent educational and portfolio project.
+
+It is not affiliated with, endorsed by, or maintained by the Brazilian Federal Revenue Service or Microsoft.
